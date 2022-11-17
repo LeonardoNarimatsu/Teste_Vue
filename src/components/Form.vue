@@ -1,11 +1,16 @@
 <template>
   <div class="cadastro_ingressante">
     <div class="card">
+      <!-- TÍTULO -->
       <div class="title">Cadastro de Ingresantes</div>
       <div class="form">
+
+        <!-- //INPUT NOME -->
         <a>Nome</a>     
           <input type="text" class="input" />
 
+         
+          <!-- SELECT CURSO UTILIZANDO VETOR CURSOS -->
           <label id="course">Curso</label> 
           <select for="course" v-model="curso" class="classic">
             <option v-for="curso in cursos" :key="curso.cursoName" :value="curso.cursoName">
@@ -13,13 +18,15 @@
             </option>
           </select>   
           
+          <!-- SELECT ESTADO UTILIZANDO VETOR ESTADOS E FUNÇÃO SWITCHSELECT -->
           <label id="state">Estado</label> 
           <select for="state" @change="switchSelect($event)" v-model="estado" class="classic">
             <option v-for="estado in estados" :key="estado.estadoName" :value="estado.estadoName" >
               {{ estado.estadoName }}
             </option>
           </select>
-
+          
+          <!-- SELECT CIDADE UTILIZANDO VETOR CIDADES -->
           <label id="city">Cidade</label> 
           <select for="city" v-model="municipio" class="classic">
             <option v-for="cidade in cidadesEscolhidas" :key="cidade.cidadeName" :value="cidade.cidadeName">
@@ -27,6 +34,7 @@
             </option>
           </select>
           
+          <!-- BOTÕES -->
           <div class="button">
             <button class="voltar">Voltar</button>
             <button class="gravar">Gravar</button>
@@ -56,6 +64,7 @@ export default {
   },
 
   methods: {
+    // FUNÇÃO GUARDA OPÇÃO SELECIONADA E ATRIBUI A VARIAVEL CidadesEscolhidas BASEADO NO SELECT ANTERIOR
     switchSelect(event) {
       this.selected = event.target.value;
       console.log(this.cidades)
@@ -71,7 +80,6 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .form {
   display: flex;
